@@ -14,7 +14,7 @@ function Todo() {
     {
       id: 1,
       title: 'Finish React Series',
-      isComplete: false,
+      isComplete: true,
       isEditing: false,
     },
     {
@@ -25,8 +25,8 @@ function Todo() {
     },
     {
       id: 3,
-      title: 'Finish HTML Series',
-      isComplete: true,
+      title: 'Finish Vue Series',
+      isComplete: false,
       isEditing: false,
     },
   ]);
