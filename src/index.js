@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Appclass from './Appclass';
+import App from './App';
+import AppClass from './components/Todo/TodoClass/TodoClass';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Appclass />
+    <AppClass />
   </React.StrictMode>
 );

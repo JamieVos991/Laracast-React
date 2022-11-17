@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
-import './components/Todo/Todo.css';
-
-export default class Appclass extends Component {
+export default class AppClass extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      idForTodo: 4,
       todos: [
         {
           id: 1,
@@ -14,26 +12,46 @@ export default class Appclass extends Component {
         },
         {
           id: 2,
-          title: 'Finish CSS Series',
-          isComplete: false,
+          title: 'Go Grocery',
+          isComplete: true,
         },
         {
           id: 3,
-          title: 'Finish HTML Series',
+          title: 'Take over world',
           isComplete: false,
         },
       ],
     };
   }
+
+  addTodo = event => {
+    event.preventDefault();
+
+    this.setState(prevState => {
+      const newTodos = [
+        ...prevState.todos,
+        {
+          id: 4,
+          title: 'This is class based components',
+          isComplete: false,
+        },
+      ];
+
+      return { todos: newTodos };
+    });
+  };
+
   render() {
     return (
       <div>
         <div className="todo-app-container">
           <div className="todo-app">
             <h2>Todo App</h2>
-            <form action="#">
+            <form action="#" onSubmit={this.addTodo}>
               <input
                 type="text"
+                value={this.todoInput}
+                onChange={this.handleInput}
                 className="todo-input"
                 placeholder="What do you need to do?"
               />
@@ -41,12 +59,16 @@ export default class Appclass extends Component {
 
             <ul className="todo-list">
               {this.state.todos.map((todo, index) => (
-                <li className="todo-item-container">
+                <li key={todo.id} className="todo-item-container">
                   <div className="todo-item">
                     <input type="checkbox" />
                     <span className="todo-item-label">{todo.title}</span>
                   </div>
-                  <button className="x-button">
+                  <button
+                    onClick={() => this.deleteTodo(todo.id)}
+                    className="x-button"
+                  >
+                    X
                     <svg
                       className="x-button-icon"
                       fill="none"

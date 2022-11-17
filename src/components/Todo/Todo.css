@@ -1,5 +1,8 @@
 .todo-app-container {
-  min-height: 100vh;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
 }
 
 .container {
