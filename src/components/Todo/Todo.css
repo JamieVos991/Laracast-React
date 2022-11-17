@@ -216,3 +216,12 @@ nav ul li:not(:first-child) {
   transition: all 300ms;
   transform: translateX(20px);
 }
+
+.no-todos-container {
+  margin: 3rem auto;
+}
+
+.no-todos-container p {
+  margin-top: 2rem;
+  text-align: center;
+}
