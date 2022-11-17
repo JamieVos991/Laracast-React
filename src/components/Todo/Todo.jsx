@@ -7,16 +7,19 @@ function Todo() {
       id: 1,
       title: 'Finish React Series',
       isComplete: false,
+      isEditing: false,
     },
     {
       id: 2,
       title: 'Finish CSS Series',
       isComplete: false,
+      isEditing: false,
     },
     {
       id: 3,
       title: 'Finish HTML Series',
       isComplete: false,
+      isEditing: false,
     },
   ]);
 
@@ -51,6 +54,56 @@ function Todo() {
     setTodoInput(event.target.value);
   }
 
+  function completeTodo(id) {
+    const updateTodos = todos.map(todo => {
+      if (todo.id === id) {
+        todo.isComplete = !todo.isComplete;
+      }
+      return todo;
+    });
+
+    setTodos(updateTodos);
+  }
+
+  function markAsEditing(id) {
+    const updateTodos = todos.map(todo => {
+      if (todo.id === id) {
+        todo.isEditing = true;
+      }
+      return todo;
+    });
+
+    setTodos(updateTodos);
+  }
+
+  function updateTodo(event, id) {
+    const updateTodos = todos.map(todo => {
+      if (todo.id === id) {
+        if (event.target.value.trim().length === 0) {
+          todo.isEditing = false;
+          return todo;
+        }
+
+        todo.title = event.target.value;
+        todo.isEditing = false;
+      }
+      return todo;
+    });
+
+    setTodos(updateTodos);
+  }
+
+  function cancelEdit(event, id) {
+    const updateTodos = todos.map(todo => {
+      if (todo.id === id) {
+        todo.isEditing = false;
+      }
+      return todo;
+    });
+
+    setTodos(updateTodos);
+  }
+
   return (
     <div>
       <div className="todo-app-container">
@@ -70,9 +123,39 @@ function Todo() {
             {todos.map((todo, index) => (
               <li key={todo.id} className="todo-item-container">
                 <div className="todo-item">
-                  <input type="checkbox" />
-                  <span className="todo-item-label">{todo.title}</span>
+                  <input
+                    type="checkbox"
+                    onChange={() => completeTodo(todo.id)}
+                    checked={todo.isComplete ? true : false}
+                  />
+
+                  {!todo.isEditing ? (
+                    <span
+                      onDoubleClick={() => markAsEditing(todo.id)}
+                      className={`todo-item-label ${
+                        todo.isComplete ? 'line-through' : ''
+                      }`}
+                    >
+                      {todo.title}
+                    </span>
+                  ) : (
+                    <input
+                      type="text"
+                      onBlur={event => updateTodo(event, todo.id)}
+                      className="todo-item-input"
+                      defaultValue={todo.title}
+                      onKeyDown={event => {
+                        if (event.key === 'Enter') {
+                          updateTodo(event, todo.id);
+                        } else if (event.key === 'Escape') {
+                          cancelEdit(event, todo.id);
+                        }
+                      }}
+                      autoFocus
+                    />
+                  )}
                 </div>
+
                 <button
                   onClick={() => deleteTodo(todo.id)}
                   className="x-button"
