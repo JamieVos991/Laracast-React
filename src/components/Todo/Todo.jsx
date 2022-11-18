@@ -129,7 +129,7 @@ function Todo() {
     <div className="todo-app-container">
       <div className="todo-app">
         <div className="name-container">
-          <h2>What is your name?</h2>
+          {name && <h2>Good evening, {name}</h2>}
           <form action="#">
             <input
               type="text"
@@ -140,9 +140,8 @@ function Todo() {
               onChange={handleNameInput}
             />
           </form>
-          {name && <p className="name-label">Hello, {name}</p>}
         </div>
-        <h2>Todo App</h2>
+        <h2>Todos</h2>
         <TodoForm addTodo={addTodo} />
 
         {todos.length > 0 ? (

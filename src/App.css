@@ -4,12 +4,15 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: sans-serif;
-  background: darkcyan;
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
 }
 
-#root {
+body {
+  background: #06185a; /* fallback for old browsers */
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
   min-height: 100vh;
   display: flex;
   justify-content: center;

@@ -1,22 +1,14 @@
 .todo-app-container {
-  width: 80%;
-}
-
-.container {
-  padding-top: 2.4rem;
-  width: 48rem;
+  width: 50rem;
 }
 
 .todo-app {
-  margin: auto;
-  margin-top: 30px;
-  padding: 2rem;
-  background: white;
-  border-radius: 0.25rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  max-width: 32rem;
-  color: #374151;
+  font-size: 80%;
+  padding: 4rem;
+  border-radius: 5rem;
+  background: #3451a1;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  color: #fff;
 }
 
 h2 {
@@ -41,12 +33,15 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 24px;
+  margin-top: 0.5rem;
 }
 
 .todo-item {
   display: flex;
+  border-radius: 1rem;
   align-items: center;
+  background: #06185a;
+  padding: 2rem;
   flex: 1;
   font-size: 18px;
   margin-right: 24px;
@@ -70,9 +65,10 @@ h2 {
 }
 
 .x-button {
-  background: white;
-  color: #6b7280;
+  background: none;
+  font-size: 2rem;
   border: none;
+  outline: none;
   cursor: pointer;
 }
 
@@ -86,7 +82,6 @@ h2 {
 }
 
 .button {
-  color: #6b7280;
   font-size: 14px;
   background: white;
   border: 1px solid lightgray;
@@ -111,7 +106,6 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #6b7280;
   margin-top: 22px;
   padding-top: 16px;
   border-top: 1px solid lightgray;
@@ -121,7 +115,6 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #6b7280;
   margin-top: 22px;
   padding-top: 16px;
   border-top: 1px solid lightgray;

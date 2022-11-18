@@ -67,7 +67,7 @@ function TodoList(props) {
               onClick={() => props.deleteTodo(todo.id)}
               className="x-button"
             >
-              X
+              ✖️
               <svg
                 className="x-button-icon"
                 fill="none"
