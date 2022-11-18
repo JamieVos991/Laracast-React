@@ -1,39 +1,21 @@
 import PropTypes from 'prop-types';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import './Todo.css';
 import NoTodos from '../NoTodos/NoTodos';
 import TodoForm from '../TodoForm/TodoForm';
 import TodoList from '../TodoList/TodoList';
+import useLocalStorage from '../../Hooks/UseLocalStorage';
 
 TodoForm.PropTypes = {
   addTodo: PropTypes.func.isRequired,
 };
 
 function Todo() {
-  const [name, setName] = useState('');
+  const [name, setName] = useLocalStorage('name', '');
   const nameInputEl = useRef(null);
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: 'Finish React Series',
-      isComplete: true,
-      isEditing: false,
-    },
-    {
-      id: 2,
-      title: 'Finish CSS Series',
-      isComplete: false,
-      isEditing: false,
-    },
-    {
-      id: 3,
-      title: 'Finish Vue Series',
-      isComplete: false,
-      isEditing: false,
-    },
-  ]);
 
-  const [idForTodo, setIdForTodo] = useState(4);
+  const [todos, setTodos] = useLocalStorage('todos', []);
+  const [idForTodo, setIdForTodo] = useLocalStorage('idForTodo', 1);
 
   function addTodo(todo) {
     setTodos([
@@ -139,6 +121,10 @@ function Todo() {
     return function cleanUp() {};
   }, []);
 
+  function handleNameInput(event) {
+    setName(event.target.value);
+  }
+
   return (
     <div className="todo-app-container">
       <div className="todo-app">
@@ -151,7 +137,7 @@ function Todo() {
               className="todo-input"
               placeholder="What is your name"
               value={name}
-              onChange={event => setName(event.target.value)}
+              onChange={handleNameInput}
             />
           </form>
           {name && <p className="name-label">Hello, {name}</p>}

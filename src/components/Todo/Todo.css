@@ -1,8 +1,5 @@
 .todo-app-container {
-  position: absolute;
-  top: 20%;
-  left: 0;
-  right: 0;
+  width: 80%;
 }
 
 .container {
@@ -232,4 +229,8 @@ nav ul li:not(:first-child) {
 
 .name-label {
   margin-top: 1.5rem;
+}
+
+.toggles-container {
+  margin: 2rem 0;
 }

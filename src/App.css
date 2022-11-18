@@ -11,7 +11,9 @@ body {
 
 #root {
   min-height: 100vh;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 ::-webkit-scrollbar {
