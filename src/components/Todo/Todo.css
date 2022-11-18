@@ -225,3 +225,11 @@ nav ul li:not(:first-child) {
   margin-top: 2rem;
   text-align: center;
 }
+
+.name-container {
+  margin-bottom: 4rem;
+}
+
+.name-label {
+  margin-top: 1.5rem;
+}
