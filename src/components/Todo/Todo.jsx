@@ -1,19 +1,18 @@
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import { useEffect, useState, useRef } from 'react';
 import './Todo.css';
 import NoTodos from '../NoTodos/NoTodos';
 import TodoForm from '../TodoForm/TodoForm';
 import TodoList from '../TodoList/TodoList';
 import useLocalStorage from '../../Hooks/UseLocalStorage';
-import useToggle from '../../Hooks/useToggle';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { TodosContext } from '../../Context/TodosContext';
 
-TodoForm.PropTypes = {
-  addTodo: PropTypes.func.isRequired,
+TodoForm.propTypes = {
+  addTodo: propTypes.func.isRequired,
 };
 
 function Todo(props) {
-  const [isFeaturesOneVisible, setFeaturesOneVisible] = useToggle();
   const [name, setName] = useLocalStorage('name', '');
   const nameInputEl = useRef(null);
 
@@ -57,24 +56,56 @@ function Todo(props) {
       <div className="todo-app-container">
         <div className="todo-app">
           <div className="name-container">
-            {name && <h2>Good evening, {name}</h2>}
-            {isFeaturesOneVisible && (
-              <form action="#">
-                <input
-                  type="text"
-                  ref={nameInputEl}
-                  className="todo-input"
-                  placeholder="What is your name"
-                  value={name}
-                  onChange={handleNameInput}
-                />
-              </form>
-            )}
+            <CSSTransition
+              in={name.length > 0}
+              timeout={300}
+              classNames="slide-vertical"
+              unmountOnExit
+            >
+              <h2>Good evening, {name}</h2>
+            </CSSTransition>
+            <form action="#">
+              <input
+                type="text"
+                ref={nameInputEl}
+                className="todo-input"
+                placeholder="What is your name"
+                value={name}
+                onChange={handleNameInput}
+              />
+            </form>
           </div>
           <h2>Todos</h2>
           <TodoForm />
 
-          {todos.length > 0 ? <TodoList /> : <NoTodos />}
+          <SwitchTransition mode="out-in">
+            <CSSTransition
+              key={todos.length > 0}
+              timeout={300}
+              classNames="slide-vertical"
+              unmountOnExit
+            >
+              {todos.length > 0 ? <TodoList /> : <NoTodos />}
+            </CSSTransition>
+          </SwitchTransition>
+
+          {/* <CSSTransition
+            in={todos.length > 0}
+            timeout={300}
+            classNames="slide-vertical"
+            unmountOnExit
+          >
+            <TodoList />
+          </CSSTransition>
+
+          <CSSTransition
+            in={todos.length === 0}
+            timeout={300}
+            classNames="slide-vertical"
+            unmountOnExit
+          >
+            <NoTodos />
+          </CSSTransition> */}
         </div>
       </div>
     </TodosContext.Provider>
