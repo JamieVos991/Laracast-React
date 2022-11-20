@@ -13,7 +13,7 @@ function TodoList() {
   const [isFeaturesTwoVisible, setFeaturesTwoVisible] = useToggle(false);
 
   function deleteTodo(id) {
-    setTodos([...todos].filter(todo => todo.id != id));
+    setTodos([...todos].filter(todo => todo.id !== id));
   }
 
   function markAsEditing(id) {
@@ -132,10 +132,10 @@ function TodoList() {
 
       <div className="toggles-container">
         <button onClick={setFeaturesOneVisible} className="button">
-          Features One Toggle
+          ♒
         </button>
         <button onClick={setFeaturesTwoVisible} className="button">
-          Features Two Toggle
+          ♊
         </button>
       </div>
 

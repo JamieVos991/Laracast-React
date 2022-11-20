@@ -1,13 +1,14 @@
-.todo-app-container {
-  width: 50rem;
-}
+/* .todo-app-container {
+} */
 
 .todo-app {
   font-size: 80%;
+  margin: 0 auto;
   padding: 4rem;
   background: #3451a1;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   color: #fff;
+  width: 50rem;
 }
 
 h2 {
@@ -21,6 +22,7 @@ h2 {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   padding: 14px;
   font-size: 16px;
+  width: 100%;
   margin-top: 16px;
 }
 
@@ -81,17 +83,14 @@ h2 {
 }
 
 .button {
-  font-size: 14px;
+  font-size: 2.5rem;
   background: white;
   color: black;
   border: 1px solid lightgray;
   padding: 6px;
-  border-radius: 5px;
+  border: none;
+  background: none;
   cursor: pointer;
-}
-
-.button:hover {
-  border: 1px solid lightgray;
 }
 
 .filter-button {
@@ -132,6 +131,9 @@ h2 {
 
 .name-container {
   margin-bottom: 40px;
+  margin: 0 auto;
+  padding-top: 4rem;
+  width: 50rem;
 }
 
 .name-label {
@@ -144,13 +146,15 @@ h2 {
 
 nav {
   background: white;
-  padding: 16px;
+  padding: 2.5rem;
 }
 
 nav ul {
   display: flex;
   justify-content: center;
   margin: auto;
+  list-style: none;
+  text-decoration: none;
 }
 
 nav ul li:not(:first-child) {
@@ -270,4 +274,29 @@ nav ul li:not(:first-child) {
   opacity: 0;
   transition: all 300ms;
   transform: translateX(20px);
+}
+
+h2 {
+  color: white;
+}
+
+.container__about {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container__contact {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container__blog {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

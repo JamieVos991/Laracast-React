@@ -53,60 +53,40 @@ function Todo(props) {
         setFilter,
       }}
     >
-      <div className="todo-app-container">
-        <div className="todo-app">
-          <div className="name-container">
-            <CSSTransition
-              in={name.length > 0}
-              timeout={300}
-              classNames="slide-vertical"
-              unmountOnExit
-            >
-              <h2>Good evening, {name}</h2>
-            </CSSTransition>
-            <form action="#">
-              <input
-                type="text"
-                ref={nameInputEl}
-                className="todo-input"
-                placeholder="What is your name"
-                value={name}
-                onChange={handleNameInput}
-              />
-            </form>
-          </div>
-          <h2>Todos</h2>
-          <TodoForm />
+      <div className="name-container">
+        <CSSTransition
+          in={name.length > 0}
+          timeout={300}
+          classNames="slide-vertical"
+          unmountOnExit
+        >
+          <h2>Good evening, {name}</h2>
+        </CSSTransition>
+        <form action="#">
+          <input
+            type="text"
+            ref={nameInputEl}
+            className="todo-input"
+            placeholder="What is your name"
+            value={name}
+            onChange={handleNameInput}
+          />
+        </form>
+      </div>
+      <div className="todo-app">
+        <h2>Todos</h2>
+        <TodoForm />
 
-          <SwitchTransition mode="out-in">
-            <CSSTransition
-              key={todos.length > 0}
-              timeout={300}
-              classNames="slide-vertical"
-              unmountOnExit
-            >
-              {todos.length > 0 ? <TodoList /> : <NoTodos />}
-            </CSSTransition>
-          </SwitchTransition>
-
-          {/* <CSSTransition
-            in={todos.length > 0}
-            timeout={300}
-            classNames="slide-vertical"
-            unmountOnExit
-          >
-            <TodoList />
-          </CSSTransition>
-
+        <SwitchTransition mode="out-in">
           <CSSTransition
-            in={todos.length === 0}
+            key={todos.length > 0}
             timeout={300}
             classNames="slide-vertical"
             unmountOnExit
           >
-            <NoTodos />
-          </CSSTransition> */}
-        </div>
+            {todos.length > 0 ? <TodoList /> : <NoTodos />}
+          </CSSTransition>
+        </SwitchTransition>
       </div>
     </TodosContext.Provider>
   );

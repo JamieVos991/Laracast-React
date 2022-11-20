@@ -17,7 +17,7 @@ function TodoCompleteAllTodos() {
   return (
     <div>
       <div onClick={completeAllTodos} className="button">
-        Check All
+        🔘
       </div>
     </div>
   );
